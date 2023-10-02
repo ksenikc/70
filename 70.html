@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .message {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 250px;
+            height: 70px;
+            border: 0;
+            background-color: rgb(255, 183, 49);
+            border-radius: 2px;
+        }
+        .digit {
+            width: 10px;
+            height: 10px;
+            background-color: aquamarine;
+        }
+
+        .unvisible {
+            display: none;
+        }
+
+        form {
+            margin-bottom: 825px;
+            margin-left: 200px;
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            cursor: pointer
+            }
+        #p{
+            border: 0;
+            border-radius: 7px 0 0 7px;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+        }
+        
+        #m{
+            border: 0;
+            border-radius: 0 7px 7px 0;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        #p[type="button"]:hover {
+            color: #ffffff;
+            background: #00a300;
+        }
+
+        #m[type="button"]:hover {
+            color: #ffffff;
+            background: #ff1717;
+        }
+    </style>
+</head>
+<body>
+   <div class="message unvisible">
+    <p>Зарегистрируйтесь, чтобы иметь возможность голосовать</p>
+</div>
+<form action="">
+<input type="button" value="+" id="p">
+<div id="digit">0</div>
+<input type="button" value="-" id="m">
+</form>
+<script>
+    let msg = document.getElementsByClassName('message') [0]
+    btns = document.querySelectorAll('[type="button"]') 
+    for (btn of btns) {
+        btn.addEventListener('mousemove', showMessage)
+        btn.addEventListener('mouseout', unShowMessage)
+    }
+    function showMessage () {
+        if (msg.classList.contains('unvisible')) {
+            msg.classList.remove('unvisible')
+        }
+    }
+    function unShowMessage () {
+        if (!msg.classList.contains('unvisible')) {
+            msg.classList.add ('unvisible')
+        }
+    }
+
+</script>
+
+</body>
+</html>
